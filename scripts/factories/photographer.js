@@ -41,10 +41,5 @@ function photographerFactory(data) {
         infoParagraphContainer.appendChild(dailyRate);
         return (article);
     }
-
-    // Creates photographer page header card
-
-    
-
     return { name, picture, getUserCardDOM, id }
 }
