@@ -18,11 +18,14 @@ async function displayHeaderData() {
     const photograph = await getUserData();
     const { name, portrait, city, country, tagline, price, id } = photograph;
 
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `./assets/photographers/${portrait}`;
 
     const photographHeader = document.querySelector(".photograph-header");
 
     console.log(photograph);
+
+    const headerCardBody = document.createElement('div');
+    headerCardBody.classList.add("header-card-body");
 
     const h1 = document.createElement('h1');
     h1.textContent = name;
@@ -38,9 +41,13 @@ async function displayHeaderData() {
     const img = document.createElement('img');
     img.setAttribute("src", picture);
 
-    photographHeader.prepend(tagline);
-    photographHeader.prepend(location);
-    photographHeader.prepend(h1);
+    photographHeader.prepend(headerCardBody);
+    headerCardBody.appendChild(h1);
+    headerCardBody.appendChild(location);
+    headerCardBody.appendChild(taglineParagraph);
+
+
+
     photographHeader.appendChild(img);
 
 
