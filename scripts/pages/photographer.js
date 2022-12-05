@@ -1,4 +1,4 @@
-import { getPhotographers } from "../utils/getData.js";
+import { getPhotographers, getMedias } from "../utils/getData.js";
 
 //Get user id from URL
 const urlSearchParams = new URLSearchParams(document.location.search);
@@ -22,8 +22,6 @@ async function displayHeaderData() {
 
     const photographHeader = document.querySelector(".photograph-header");
 
-    console.log(photograph);
-
     const headerCardBody = document.createElement('div');
     headerCardBody.classList.add("header-card-body");
 
@@ -45,12 +43,41 @@ async function displayHeaderData() {
     headerCardBody.appendChild(h1);
     headerCardBody.appendChild(location);
     headerCardBody.appendChild(taglineParagraph);
-
-
-
     photographHeader.appendChild(img);
-
-
 }
 
 displayHeaderData();
+
+
+//Get user medias return array of objects
+async function getUserMedias() {
+    const { photographers } = await getPhotographers();
+    const photographer = photographers.find((obj) => {
+        return obj.id == userId;
+    });
+    return photographer;
+}
+
+//Display gallery Data
+
+async function displayGalleryData(medias) {
+//TO DO: get id
+
+    const gallery = document.getElementById('gallery');
+    medias.forEach((media) => {
+        const mediaModel = mediaFactory(media);
+        const mediaGalleryDOM = mediaModel.getUserMediaDOM();
+        gallery.appendChild(mediaGalleryDOM);
+    });
+};
+
+async function initMedia() {
+    const { medias } = await getMedias();
+    
+//TO DO Create array of user medias
+
+    displayGalleryData(medias);
+};
+
+initMedia();
+

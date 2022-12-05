@@ -60,6 +60,12 @@
     cursor: pointer;
 }
 
+#gallery img {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
