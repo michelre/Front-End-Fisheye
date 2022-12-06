@@ -1,7 +1,7 @@
 // Get photographers data from json file as array of objects
-async function getPhotographers() {
+function getPhotographers() {
 
-    const photographers = await fetch("../../data/photographers.json")
+    return fetch("../../data/photographers.json")
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -15,15 +15,13 @@ async function getPhotographers() {
             console.log(error);
         });
 
-    return ({
-        photographers: [...photographers]
-    })
+
 
 };
 
 //Get media data from json file as array of objects
-async function getMedias() {
-    const medias = await fetch("../../data/photographers.json")
+function getMedias() {
+    return fetch("../../data/photographers.json")
     .then(response => {
         if (response.ok) {
             return response.json();
@@ -37,9 +35,6 @@ async function getMedias() {
         console.log(error);
     });
 
-return ({
-    medias: [...medias]
-})
 }
 
 export {getPhotographers, getMedias};

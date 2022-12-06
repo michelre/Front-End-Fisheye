@@ -12,13 +12,6 @@ function mediaFactory(data) {
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add("media-container");
 
-        const img = document.createElement('img');
-        img.setAttribute("src", galleryImage);
-
-        const vid = document.createElement('video');
-        vid.setAttribute("src", galleryVideo);
-        vid.setAttribute("controls", "controls");
-
         const mediaBody = document.createElement('div');
         mediaBody.classList.add("media-body");
 
@@ -34,13 +27,18 @@ function mediaFactory(data) {
         mediaLikes.textContent = likes;
 
         const mediaLikesIcon = document.createElement('i');
-        mediaLikesIcon.classList.add("fa-solid",  "fa-heart", "fa-xl", "media-likes-icon");
-        
+        mediaLikesIcon.classList.add("fa-solid", "fa-heart", "fa-xl", "media-likes-icon");
+
         article.appendChild(mediaContainer);
 
-        if(image) {
+        if (image) {
+            const img = document.createElement('img');
+            img.setAttribute("src", galleryImage);
             mediaContainer.appendChild(img);
-        } else if(video) {
+        } else if (video) {
+            const vid = document.createElement('video');
+            vid.setAttribute("src", galleryVideo);
+            vid.setAttribute("controls", "controls");
             mediaContainer.appendChild(vid);
         }
 

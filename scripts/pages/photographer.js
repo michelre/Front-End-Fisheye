@@ -6,7 +6,7 @@ const userId = urlSearchParams.get("id");
 
 //Get user data, return photographer object
 async function getUserData() {
-    const { photographers } = await getPhotographers();
+    const  photographers  = await getPhotographers();
     const photographer = photographers.find((obj) => {
         return obj.id == userId;
     });
@@ -52,9 +52,7 @@ async function displayUserPageData() {
 
     //Bottom tab
     const bottomTab = document.getElementById("bottom-tab");
-    console.log(bottomTab[0]);
     bottomTab.appendChild(dailyRate);
-    console.log(bottomTab);
 }
 
 displayUserPageData();
@@ -74,7 +72,7 @@ async function displayGalleryData(medias) {
 };
 
 async function initMedia() {
-    const { medias } = await getMedias();
+    const  medias  = await getMedias();
 
     //Create new array containing user medias
     const userMedia = medias.filter(media => media.photographerId == userId)
