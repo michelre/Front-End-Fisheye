@@ -1,7 +1,8 @@
 function mediaFactory(data) {
-    const { id, photographerId, title, image, likes, date, price } = data;
+    const { id, photographerId, title, image, video, likes, date, price } = data;
 
     const galleryImage = `./assets/photos/${photographerId}/${image}`;
+    const galleryVideo = `./assets/photos/${photographerId}/${video}`;
 
     //Creates Gallery
     function getUserMediaDOM() {
@@ -12,25 +13,45 @@ function mediaFactory(data) {
         img.setAttribute("src", galleryImage);
 
         const vid = document.createElement('video');
-        vid.setAttribute("src", galleryImage);
+        vid.setAttribute("src", galleryVideo);
         vid.setAttribute("controls", "controls");
-
-        //Check if media is image or video and add according DOM element
-        const isMediaImage = (url) => {
-            return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-        }
-
-        if (isMediaImage(galleryImage)) {
+        
+        if(image) {
+            console.log(img);
             article.appendChild(img);
-        }
-        else {
+        } else {
+            console.log(vid);
             article.appendChild(vid);
         }
 
+        const mediaBody = document.createElement('div');
+        mediaBody.classList.add("media-body");
+
+        const mediaTitle = document.createElement('p');
+        mediaTitle.classList.add("media-title");
+        mediaTitle.textContent = title;
+
+        const mediaLikesContainer = document.createElement('div');
+        mediaLikesContainer.classList.add("media-likes-container");
+
+        const mediaLikes = document.createElement('p')
+        mediaLikes.classList.add("media-likes");
+        mediaLikes.textContent = likes;
+
+        const mediaLikesIcon = document.createElement('i');
+        mediaLikesIcon.classList.add("fa-solid",  "fa-heart", "media-likes-icon");
+        
+        
+        article.appendChild(mediaBody);
+        mediaBody.appendChild(mediaTitle);
+        article.appendChild(mediaLikesContainer);
+        mediaLikesContainer.appendChild(mediaLikes);
+        mediaLikesContainer.appendChild(mediaLikesIcon);
+
         return (article);
     }
-   
-    return { galleryImage, title, likes, getUserMediaDOM }
+
+    return { galleryImage, galleryVideo, title, likes, getUserMediaDOM }
 
 
 }

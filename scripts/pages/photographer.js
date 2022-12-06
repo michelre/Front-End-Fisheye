@@ -49,19 +49,11 @@ async function displayHeaderData() {
 displayHeaderData();
 
 
-//Get user medias return array of objects
-async function getUserMedias() {
-    const { photographers } = await getPhotographers();
-    const photographer = photographers.find((obj) => {
-        return obj.id == userId;
-    });
-    return photographer;
-}
+
 
 //Display gallery Data
 
 async function displayGalleryData(medias) {
-//TO DO: get id
 
     const gallery = document.getElementById('gallery');
     medias.forEach((media) => {
@@ -73,10 +65,10 @@ async function displayGalleryData(medias) {
 
 async function initMedia() {
     const { medias } = await getMedias();
-    
-//TO DO Create array of user medias
 
-    displayGalleryData(medias);
+    //Create new array containing user medias
+    const userMedia = medias.filter(media => media.photographerId == userId)
+    displayGalleryData(userMedia);
 };
 
 initMedia();
