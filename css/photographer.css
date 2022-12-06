@@ -122,15 +122,31 @@ video {
 padding-right: 0.5rem;
 }
 
-.bottom-tab {
+#bottom-tab {
     background-color:#DB8876 ;
     width: 376px;
     display: inline-flex;
+    justify-content: space-between;
     position: sticky;
     bottom: 0;
     left: 70%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+.bottom-tab-dailyrate {
+    padding-right: 34px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.total-likes-container{
+    display: flex;
+}
+
+.bottom-tab-like-icon {
+    align-self: center;
+    padding-left: 0.5rem;
 }
 
 .modal {

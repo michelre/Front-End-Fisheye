@@ -13,8 +13,8 @@ async function getUserData() {
     return photographer;
 }
 
-// display header user data
-async function displayHeaderData() {
+// display user page data
+async function displayUserPageData() {
     const photograph = await getUserData();
     const { name, portrait, city, country, tagline, price, id } = photograph;
 
@@ -39,14 +39,25 @@ async function displayHeaderData() {
     const img = document.createElement('img');
     img.setAttribute("src", picture);
 
+    const dailyRate = document.createElement('p');
+    dailyRate.textContent = `${price}€/jour`;
+    dailyRate.classList.add("bottom-tab-dailyrate");
+
+    //Header Card
     photographHeader.prepend(headerCardBody);
     headerCardBody.appendChild(h1);
     headerCardBody.appendChild(location);
     headerCardBody.appendChild(taglineParagraph);
     photographHeader.appendChild(img);
+
+    //Bottom tab
+    const bottomTab = document.getElementById("bottom-tab");
+    console.log(bottomTab[0]);
+    bottomTab.appendChild(dailyRate);
+    console.log(bottomTab);
 }
 
-displayHeaderData();
+displayUserPageData();
 
 
 //Display gallery Data
