@@ -5,6 +5,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
+    width: 1240px;
     margin: 0 100px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -119,6 +120,17 @@ video {
 
 .media-likes {
 padding-right: 0.5rem;
+}
+
+.bottom-tab {
+    background-color:#DB8876 ;
+    width: 376px;
+    display: inline-flex;
+    position: sticky;
+    bottom: 0;
+    left: 70%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .modal {
