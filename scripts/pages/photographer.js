@@ -49,13 +49,12 @@ async function displayHeaderData() {
 displayHeaderData();
 
 
-
-
 //Display gallery Data
 
 async function displayGalleryData(medias) {
 
     const gallery = document.getElementById('gallery');
+
     medias.forEach((media) => {
         const mediaModel = mediaFactory(media);
         const mediaGalleryDOM = mediaModel.getUserMediaDOM();
