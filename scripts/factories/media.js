@@ -1,8 +1,10 @@
 function mediaFactory(data) {
-    const { id, photographerId, title, image, video, likes, date, price } = data;
+    let { id, photographerId, title, image, video, likes, date, price } = data;
 
     const galleryImage = `./assets/photos/${photographerId}/${image}`;
     const galleryVideo = `./assets/photos/${photographerId}/${video}`;
+
+    let mediaLiked = false;
 
     //Creates Gallery
     function getUserMediaDOM() {
@@ -26,8 +28,25 @@ function mediaFactory(data) {
         mediaLikes.classList.add("media-likes");
         mediaLikes.textContent = likes;
 
+        //Media Like count
+        function addRemoveLike () {
+            
+            if (!mediaLiked) {
+                mediaLiked = true;
+                likes = likes + 1;
+                mediaLikes.textContent = likes;
+            } else if (mediaLiked) {
+                mediaLiked = false;
+                likes = likes - 1;
+                mediaLikes.textContent = likes;
+            }
+        }  
+
         const mediaLikesIcon = document.createElement('i');
         mediaLikesIcon.classList.add("fa-solid", "fa-heart", "fa-xl", "media-likes-icon");
+
+        //Like Icon click event
+        mediaLikesIcon.addEventListener("click", addRemoveLike);
 
         article.appendChild(mediaContainer);
 
@@ -46,14 +65,14 @@ function mediaFactory(data) {
         mediaBody.appendChild(mediaTitle);
         mediaBody.appendChild(mediaLikesContainer);
         mediaLikesContainer.appendChild(mediaLikes);
-        mediaLikesContainer.appendChild(mediaLikesIcon);
-
+        mediaLikesContainer.appendChild(mediaLikesIcon);     
         return (article);
     }
+    
+
 
     return { galleryImage, galleryVideo, title, likes, getUserMediaDOM }
 
 
 }
-
 

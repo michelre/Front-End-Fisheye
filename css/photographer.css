@@ -98,12 +98,13 @@ video {
 
 .media-body {
     display: flex;
-
+    justify-content: space-between;
     padding-top: 10px;
 }
 
 .media-likes-container {
     display: flex;
+    
 }
 
 .media-title,
