@@ -143,6 +143,11 @@ video {
     font-weight: 500;
 }
 
+.total-likes {
+    font-size: 24px;
+    font-weight: 500;
+}
+
 .total-likes-container {
     display: flex;
 }

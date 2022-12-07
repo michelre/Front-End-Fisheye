@@ -34,11 +34,11 @@ function mediaFactory(data) {
             if (!mediaLiked) {
                 mediaLiked = true;
                 likes = likes + 1;
-                mediaLikes.textContent = likes;
+                mediaLikes.textContent = likes;            
             } else if (mediaLiked) {
                 mediaLiked = false;
                 likes = likes - 1;
-                mediaLikes.textContent = likes;
+                mediaLikes.textContent = likes;        
             }
         }  
 
@@ -75,4 +75,3 @@ function mediaFactory(data) {
 
 
 }
-

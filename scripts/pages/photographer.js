@@ -4,9 +4,11 @@ import { getPhotographers, getMedias } from "../utils/getData.js";
 const urlSearchParams = new URLSearchParams(document.location.search);
 const userId = urlSearchParams.get("id");
 
+let totalLikes = 0;
+
 //Get user data, return photographer object
 async function getUserData() {
-    const  photographers  = await getPhotographers();
+    const photographers = await getPhotographers();
     const photographer = photographers.find((obj) => {
         return obj.id == userId;
     });
@@ -43,6 +45,10 @@ async function displayUserPageData() {
     dailyRate.textContent = `${price}€/jour`;
     dailyRate.classList.add("bottom-tab-dailyrate");
 
+    // const totalLikesDOM = document.createElement('p');
+    // totalLikesDOM.textContent = totalLikes;
+    // totalLikesDOM.classList.add("total-likes");
+
     //Header Card
     photographHeader.prepend(headerCardBody);
     headerCardBody.appendChild(h1);
@@ -52,15 +58,18 @@ async function displayUserPageData() {
 
     //Bottom tab
     const bottomTab = document.getElementById("bottom-tab");
+    // const totalLikesContainer = document.querySelector(".total-likes-container");
+    // totalLikesContainer.prepend(totalLikesDOM);
     bottomTab.appendChild(dailyRate);
+
+    
 }
 
 displayUserPageData();
 
-
 //Display gallery Data
 
-async function displayGalleryData(medias) {
+function displayGalleryData(medias) {
 
     const gallery = document.getElementById('gallery');
 
@@ -71,12 +80,54 @@ async function displayGalleryData(medias) {
     });
 };
 
+//Calculate Total likes function
+
+function calculateTotalLikes() {
+ 
+    for (let i = 0; i < mediaLikesDOM.length; i++) {
+     let mediaLikesToNumber = Number(mediaLikesDOM[i].textContent);
+     totalLikes += mediaLikesToNumber;
+   }
+ }
+
+
+const mediaLikesDOM = document.getElementsByClassName("media-likes");
+
 async function initMedia() {
-    const  medias  = await getMedias();
+    const medias = await getMedias();
 
     //Create new array containing user medias
-    const userMedia = medias.filter(media => media.photographerId == userId)
+    const userMedia = medias.filter(media => media.photographerId == userId);
     displayGalleryData(userMedia);
+    
+   //Calculate and display total likes after initialization
+    calculateTotalLikes();
+   
+    const totalLikesDOM = document.createElement('p');
+    totalLikesDOM.textContent = totalLikes;
+    totalLikesDOM.classList.add("total-likes");
+
+    const totalLikesContainer = document.querySelector(".total-likes-container");
+    totalLikesContainer.prepend(totalLikesDOM);
+   
+
+    console.log(totalLikes);
+    totalLikes+= 2;
+    console.log(totalLikes);
+    // function updateTotalLike () {
+            
+    //     if (!mediaLiked) {
+    //         mediaLiked = true;
+    //         likes = likes + 1;
+    //         mediaLikes.textContent = likes;            
+    //     } else if (mediaLiked) {
+    //         mediaLiked = false;
+    //         likes = likes - 1;
+    //         mediaLikes.textContent = likes;        
+    //     }
+    // }  
+
+
 };
 
 initMedia();
