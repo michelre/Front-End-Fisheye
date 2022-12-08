@@ -150,6 +150,7 @@ video {
 
 .total-likes-container {
     display: flex;
+    padding-left: 36px;
 }
 
 .bottom-tab-like-icon {

@@ -1,4 +1,5 @@
 import { getPhotographers, getMedias } from "../utils/getData.js";
+import { mediaFactory } from "../factories/media.js";
 
 //Get user id from URL
 const urlSearchParams = new URLSearchParams(document.location.search);
@@ -45,10 +46,6 @@ async function displayUserPageData() {
     dailyRate.textContent = `${price}€/jour`;
     dailyRate.classList.add("bottom-tab-dailyrate");
 
-    // const totalLikesDOM = document.createElement('p');
-    // totalLikesDOM.textContent = totalLikes;
-    // totalLikesDOM.classList.add("total-likes");
-
     //Header Card
     photographHeader.prepend(headerCardBody);
     headerCardBody.appendChild(h1);
@@ -58,11 +55,9 @@ async function displayUserPageData() {
 
     //Bottom tab
     const bottomTab = document.getElementById("bottom-tab");
-    // const totalLikesContainer = document.querySelector(".total-likes-container");
-    // totalLikesContainer.prepend(totalLikesDOM);
     bottomTab.appendChild(dailyRate);
 
-    
+
 }
 
 displayUserPageData();
@@ -80,18 +75,38 @@ function displayGalleryData(medias) {
     });
 };
 
-//Calculate Total likes function
-
-function calculateTotalLikes() {
- 
-    for (let i = 0; i < mediaLikesDOM.length; i++) {
-     let mediaLikesToNumber = Number(mediaLikesDOM[i].textContent);
-     totalLikes += mediaLikesToNumber;
-   }
- }
-
-
+//Get array of media likes number
 const mediaLikesDOM = document.getElementsByClassName("media-likes");
+
+//Calculate sum of media likes
+function calculateTotalLikes() {
+    for (let i = 0; i < mediaLikesDOM.length; i++) {
+        let mediaLikesToNumber = Number(mediaLikesDOM[i].textContent);
+        totalLikes += mediaLikesToNumber;
+    }
+}
+
+//display total like in bottom tab
+function displayTotalLikes() {
+    const totalLikesDOM = document.createElement('p');
+    totalLikesDOM.textContent = totalLikes;
+    totalLikesDOM.classList.add("total-likes");
+    const totalLikesContainer = document.querySelector(".total-likes-container");
+    totalLikesContainer.prepend(totalLikesDOM);
+}
+
+//Update total likes click
+function TotalLikesAddOne() {
+    totalLikes += 1;
+}
+
+function TotalLikesRemoveOne() {
+    totalLikes -= 1;
+}
+
+function updateTotalLikesDisplay(domElement) {
+    domElement.textContent = totalLikes;
+}
 
 async function initMedia() {
     const medias = await getMedias();
@@ -99,36 +114,13 @@ async function initMedia() {
     //Create new array containing user medias
     const userMedia = medias.filter(media => media.photographerId == userId);
     displayGalleryData(userMedia);
-    
-   //Calculate and display total likes after initialization
+
+    //Calculate and display total likes after initialization
     calculateTotalLikes();
-   
-    const totalLikesDOM = document.createElement('p');
-    totalLikesDOM.textContent = totalLikes;
-    totalLikesDOM.classList.add("total-likes");
-
-    const totalLikesContainer = document.querySelector(".total-likes-container");
-    totalLikesContainer.prepend(totalLikesDOM);
-   
-
-    console.log(totalLikes);
-    totalLikes+= 2;
-    console.log(totalLikes);
-    // function updateTotalLike () {
-            
-    //     if (!mediaLiked) {
-    //         mediaLiked = true;
-    //         likes = likes + 1;
-    //         mediaLikes.textContent = likes;            
-    //     } else if (mediaLiked) {
-    //         mediaLiked = false;
-    //         likes = likes - 1;
-    //         mediaLikes.textContent = likes;        
-    //     }
-    // }  
-
+    displayTotalLikes();
 
 };
 
 initMedia();
 
+export { TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay };

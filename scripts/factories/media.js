@@ -1,3 +1,5 @@
+import {TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay} from "../pages/photographer.js"
+
 function mediaFactory(data) {
     let { id, photographerId, title, image, video, likes, date, price } = data;
 
@@ -34,11 +36,16 @@ function mediaFactory(data) {
             if (!mediaLiked) {
                 mediaLiked = true;
                 likes = likes + 1;
-                mediaLikes.textContent = likes;            
+                mediaLikes.textContent = likes;
+                TotalLikesAddOne();
+                updateTotalLikesDisplay(document.querySelector(".total-likes"));
+                         
             } else if (mediaLiked) {
                 mediaLiked = false;
                 likes = likes - 1;
-                mediaLikes.textContent = likes;        
+                mediaLikes.textContent = likes; 
+                TotalLikesRemoveOne();
+                updateTotalLikesDisplay(document.querySelector(".total-likes"));
             }
         }  
 
@@ -75,3 +82,5 @@ function mediaFactory(data) {
 
 
 }
+
+export {mediaFactory};
