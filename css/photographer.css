@@ -232,3 +232,17 @@ form textarea {
     font-size: 36px;
     font-weight: 400;
 }
+
+.lightbox-slide {
+    width:1050px;
+    height: 900px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.lightbox-slide img {
+ object-fit: cover;
+ width:100%;
+
+ 
+}

@@ -1,5 +1,6 @@
 import {TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay} from "../pages/photographer.js"
 
+
 function mediaFactory(data) {
     let { id, photographerId, title, image, video, likes, date, price } = data;
 
@@ -57,15 +58,30 @@ function mediaFactory(data) {
 
         article.appendChild(mediaContainer);
 
+        //Create lightbox slide div
+        const lighboxModalContent = document.querySelector(".lightbox-modal-content");
+        const lightboxTitleContainer = document.querySelector(".lightbox-media-title-container");
+        const lightboxSlide = document.createElement("div");
+        lightboxSlide.classList.add("lightbox-slide");
+
+        //Check if media is image or video and add to DOM
         if (image) {
             const img = document.createElement('img');
             img.setAttribute("src", galleryImage);
+            //add Image to gallery
             mediaContainer.appendChild(img);
+            //add image to lightbox
+            lighboxModalContent.insertBefore(lightboxSlide, lightboxTitleContainer);
+            lightboxSlide.appendChild(img.cloneNode(true));
         } else if (video) {
             const vid = document.createElement('video');
             vid.setAttribute("src", galleryVideo);
             vid.setAttribute("controls", "controls");
+            //add video to gallery
             mediaContainer.appendChild(vid);
+            //add video to lightbox
+            lighboxModalContent.insertBefore(lightboxSlide, lightboxTitleContainer);
+            lightboxSlide.appendChild(vid.cloneNode(true));
         }
 
         article.appendChild(mediaBody);
