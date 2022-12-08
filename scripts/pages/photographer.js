@@ -57,6 +57,10 @@ async function displayUserPageData() {
     const bottomTab = document.getElementById("bottom-tab");
     bottomTab.appendChild(dailyRate);
 
+    //Modal, add Photographer name to title
+    const modalTitle = document.querySelector(".modal-title");
+    modalTitle.insertAdjacentText("beforeend", name);
+    
 
 }
 
