@@ -60,9 +60,13 @@ function mediaFactory(data) {
 
         //Create lightbox slide div
         const lighboxSlides = document.querySelector(".lightbox-slides");
-        const lightboxTitleContainer = document.querySelector(".lightbox-media-title-container");
         const lightboxSlide = document.createElement("div");
         lightboxSlide.classList.add("lightbox-slide");
+
+        //Create lightbox slide title
+        const lightboxTitleContainer = document.querySelector(".lightbox-media-title-container");
+        const lightboxMediaTitle = document.createElement("p");
+        lightboxMediaTitle.classList.add("lightbox-media-title");
 
         //Check if media is image or video and add to DOM
         if (image) {
@@ -73,6 +77,9 @@ function mediaFactory(data) {
             //add image to lightbox
             lighboxSlides.appendChild(lightboxSlide);
             lightboxSlide.appendChild(img.cloneNode(true));
+            //add image title
+            lightboxMediaTitle.textContent = title;
+            lightboxTitleContainer.appendChild(lightboxMediaTitle);
         } else if (video) {
             const vid = document.createElement('video');
             vid.setAttribute("src", galleryVideo);
@@ -82,6 +89,9 @@ function mediaFactory(data) {
             //add video to lightbox
             lighboxSlides.appendChild(lightboxSlide);
             lightboxSlide.appendChild(vid.cloneNode(true));
+            //add video title
+            lightboxMediaTitle.textContent = title;
+            lightboxTitleContainer.appendChild(lightboxMediaTitle);
         }
 
         article.appendChild(mediaBody);
