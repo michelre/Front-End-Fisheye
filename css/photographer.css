@@ -89,7 +89,7 @@ article {
 
 }
 
-video {
+.gallery video {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -268,10 +268,29 @@ transform: translateY(-50%);
     max-height: 700px;
 }
 
-.lightbox-media-container img {
+.lightbox-slide {
+display: none;
+
+
+}
+
+.lightbox-slide[data-active] {
+    display: block;
+}
+
+.lightbox-slide img {
+    object-fit: cover;
     width: 100%;
     border-radius: 5px;
     max-height: 700px;
+}
+
+.lightbox-slide video {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+    max-height: 700px;
+    opacity: 10;
 }
 
 .lightbox-media-title {

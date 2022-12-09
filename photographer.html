@@ -59,12 +59,14 @@
 
     <div class="lightbox-modal-content">
       <div class="lightbox-prev-container">
-        <i class="fa-sharp fa-solid fa-chevron-left fa-2xl" id="previousBtn"></i>
+        <i class="fa-sharp fa-solid fa-chevron-left fa-2xl" id="previousBtn" data-lightbox-button="prev"></i>
       </div>
 
       <div class="lightbox-media-container">
-        <div class="lightbox-slide">
-          <img src="assets/photos/82/Art_Mine.jpg" alt="">
+        <div class="lightbox-slides">
+          <div class="lightbox-slide" data-active>
+            <img src="assets/photos/82/Art_Mine.jpg" alt="">
+          </div>
         </div>
         <div class="lightbox-media-title-container">
           <p class="lightbox-media-title">Media Title</p>
@@ -72,7 +74,7 @@
       </div>
 
       <div class="lightbox-next-container">
-        <i class="fa-sharp fa-solid fa-2xl fa-chevron-right" id="nextBtn"></i>
+        <i class="fa-sharp fa-solid fa-2xl fa-chevron-right" id="nextBtn" data-lightbox-button="next"></i>
         <!-- Close button -->
         <svg class="lightbox-modal-close" width="42" height="42" viewBox="0 0 42 42" fill="none"
           xmlns="http://www.w3.org/2000/svg">

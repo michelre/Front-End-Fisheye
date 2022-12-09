@@ -1,39 +1,28 @@
 // Open the Modal
 function openModal() {
-    document.querySelector("lightbox-modal").style.display = "block";
+    document.querySelector(".lightbox-modal").style.display = "block";
+    console.log(document.querySelector(".lightbox-modal"));
   }
-  
+
   // Close the Modal
   function closeModal() {
-    document.querySelector("lightbox-modal").style.display = "none";
+    document.querySelector(".lightbox-modal").style.display = "none";
   }
   
-  // let slideIndex = 1;
-  // showSlides(slideIndex);
-  
-  // // Next/previous controls
-  // function plusSlides(n) {
-  //   showSlides(slideIndex += n);
-  // }
-  
-  // // Thumbnail image controls
-  // function currentSlide(n) {
-  //   showSlides(slideIndex = n);
-  // }
-  
-  // function showSlides(n) {
-  //   let i;
-  //   const slides = document.getElementsByClassName("mySlides");
-    
-  //   var captionText = document.getElementById("caption");
-  //   if (n > slides.length) {slideIndex = 1}
-  //   if (n < 1) {slideIndex = slides.length}
-  //   for (i = 0; i < slides.length; i++) {
-  //     slides[i].style.display = "none";
-  //   }
-   
-  //   slides[slideIndex-1].style.display = "block";
-   
-  //   // captionText.innerHTML = dots[slideIndex-1].alt;
-  // }
+  const lighboxButtons = document.querySelectorAll("[data-lightbox-button]");
+
+  lighboxButtons.forEach(lighboxButton => {
+    lighboxButton.addEventListener("click",() => {
+      const offset = lighboxButton.dataset.lightboxButton === "next" ? 1 : -1;
+      const slides = document.querySelector(".lightbox-slides");
+      const activeSlide = slides.querySelector("[data-active]");
+      let newindex = [...slides.children].indexOf(activeSlide) + offset;
+      if (newindex < 0 ) newindex = slides.children.length - 1;
+      if (newindex >= slides.children.length ) newindex = 0;
+
+      slides.children[newindex].dataset.active = true;
+      delete activeSlide.dataset.active
+    })
+  })
+
   

@@ -59,7 +59,7 @@ function mediaFactory(data) {
         article.appendChild(mediaContainer);
 
         //Create lightbox slide div
-        const lighboxMediaContainer = document.querySelector(".lightbox-media-container");
+        const lighboxSlides = document.querySelector(".lightbox-slides");
         const lightboxTitleContainer = document.querySelector(".lightbox-media-title-container");
         const lightboxSlide = document.createElement("div");
         lightboxSlide.classList.add("lightbox-slide");
@@ -71,8 +71,8 @@ function mediaFactory(data) {
             //add Image to gallery
             mediaContainer.appendChild(img);
             //add image to lightbox
-            // lighboxMediaContainer.insertBefore(lightboxSlide, lightboxTitleContainer);
-            // lightboxSlide.appendChild(img.cloneNode(true));
+            lighboxSlides.appendChild(lightboxSlide);
+            lightboxSlide.appendChild(img.cloneNode(true));
         } else if (video) {
             const vid = document.createElement('video');
             vid.setAttribute("src", galleryVideo);
@@ -80,8 +80,8 @@ function mediaFactory(data) {
             //add video to gallery
             mediaContainer.appendChild(vid);
             //add video to lightbox
-            // lighboxMediaContainer.insertBefore(lightboxSlide, lightboxTitleContainer);
-            // lightboxSlide.appendChild(vid.cloneNode(true));
+            lighboxSlides.appendChild(lightboxSlide);
+            lightboxSlide.appendChild(vid.cloneNode(true));
         }
 
         article.appendChild(mediaBody);
