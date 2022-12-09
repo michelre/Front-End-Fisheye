@@ -71,8 +71,8 @@ function mediaFactory(data) {
             //add Image to gallery
             mediaContainer.appendChild(img);
             //add image to lightbox
-            lighboxModalContent.insertBefore(lightboxSlide, lightboxTitleContainer);
-            lightboxSlide.appendChild(img.cloneNode(true));
+            // lighboxModalContent.insertBefore(lightboxSlide, lightboxTitleContainer);
+            // lightboxSlide.appendChild(img.cloneNode(true));
         } else if (video) {
             const vid = document.createElement('video');
             vid.setAttribute("src", galleryVideo);
@@ -80,8 +80,8 @@ function mediaFactory(data) {
             //add video to gallery
             mediaContainer.appendChild(vid);
             //add video to lightbox
-            lighboxModalContent.insertBefore(lightboxSlide, lightboxTitleContainer);
-            lightboxSlide.appendChild(vid.cloneNode(true));
+            // lighboxModalContent.insertBefore(lightboxSlide, lightboxTitleContainer);
+            // lightboxSlide.appendChild(vid.cloneNode(true));
         }
 
         article.appendChild(mediaBody);
