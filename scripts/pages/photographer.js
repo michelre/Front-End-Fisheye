@@ -122,7 +122,6 @@ async function initMedia() {
     //Calculate and display total likes after initialization
     calculateTotalLikes();
     displayTotalLikes();
-
 };
 
 initMedia();

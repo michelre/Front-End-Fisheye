@@ -1,4 +1,4 @@
-import {TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay} from "../pages/photographer.js"
+import { TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay } from "../pages/photographer.js"
 
 
 function mediaFactory(data) {
@@ -9,13 +9,14 @@ function mediaFactory(data) {
 
     let mediaLiked = false;
 
-    //Creates Gallery
+    //Creates gallery & lightbox
     function getUserMediaDOM() {
 
         const article = document.createElement('article');
 
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add("media-container");
+        mediaContainer.setAttribute("data",id);
 
         const mediaBody = document.createElement('div');
         mediaBody.classList.add("media-body");
@@ -25,30 +26,30 @@ function mediaFactory(data) {
         mediaTitle.textContent = title;
 
         const mediaLikesContainer = document.createElement('div');
-        mediaLikesContainer.classList.add("media-likes-container");
+        mediaLikesContainer.classList.add("media-likes-container"); 
 
         const mediaLikes = document.createElement('p')
         mediaLikes.classList.add("media-likes");
         mediaLikes.textContent = likes;
 
         //Media Like count
-        function addRemoveLike () {
-            
+        function addRemoveLike() {
+
             if (!mediaLiked) {
                 mediaLiked = true;
                 likes = likes + 1;
                 mediaLikes.textContent = likes;
                 TotalLikesAddOne();
                 updateTotalLikesDisplay(document.querySelector(".total-likes"));
-                         
+
             } else if (mediaLiked) {
                 mediaLiked = false;
                 likes = likes - 1;
-                mediaLikes.textContent = likes; 
+                mediaLikes.textContent = likes;
                 TotalLikesRemoveOne();
                 updateTotalLikesDisplay(document.querySelector(".total-likes"));
             }
-        }  
+        }
 
         const mediaLikesIcon = document.createElement('i');
         mediaLikesIcon.classList.add("fa-solid", "fa-heart", "fa-xl", "media-likes-icon");
@@ -62,6 +63,7 @@ function mediaFactory(data) {
         const lighboxSlides = document.querySelector(".lightbox-slides");
         const lightboxSlide = document.createElement("div");
         lightboxSlide.classList.add("lightbox-slide");
+        lightboxSlide.classList.add(id);
 
         //Create lightbox slide title
         const lightboxTitleContainer = document.querySelector(".lightbox-media-title-container");
@@ -72,6 +74,7 @@ function mediaFactory(data) {
         if (image) {
             const img = document.createElement('img');
             img.setAttribute("src", galleryImage);
+            img.setAttribute("data",id);
             //add Image to gallery
             mediaContainer.appendChild(img);
             //add image to lightbox
@@ -98,10 +101,10 @@ function mediaFactory(data) {
         mediaBody.appendChild(mediaTitle);
         mediaBody.appendChild(mediaLikesContainer);
         mediaLikesContainer.appendChild(mediaLikes);
-        mediaLikesContainer.appendChild(mediaLikesIcon);     
+        mediaLikesContainer.appendChild(mediaLikesIcon);
         return (article);
     }
-    
+
 
 
     return { galleryImage, galleryVideo, title, likes, getUserMediaDOM }
@@ -109,4 +112,7 @@ function mediaFactory(data) {
 
 }
 
-export {mediaFactory};
+
+
+
+export { mediaFactory };

@@ -93,7 +93,7 @@ article {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    width: 100%
+    width: 100%;
 }
 
 .media-body {
@@ -241,7 +241,7 @@ form textarea {
     top: 0;
     width: 100%;
     height: 100%;
-
+    display:none;
 }
 
 .lightbox-modal-content {
@@ -253,7 +253,7 @@ form textarea {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    /* display:none; */
+    
 }
 
 .lightbox-media-container {
@@ -272,7 +272,7 @@ form textarea {
     display: none;
 }
 
-.lightbox-slide[data-active] {
+.lightbox-slide[data-active = true] {
     display: block;
 }
 
