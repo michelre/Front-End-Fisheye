@@ -87,6 +87,7 @@ function mediaFactory(data) {
             const vid = document.createElement('video');
             vid.setAttribute("src", galleryVideo);
             vid.setAttribute("controls", "controls");
+            vid.setAttribute("data",id);
             //add video to gallery
             mediaContainer.appendChild(vid);
             //add video to lightbox
