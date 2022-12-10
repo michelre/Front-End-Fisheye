@@ -16,7 +16,6 @@ function mediaFactory(data) {
 
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add("media-container");
-        mediaContainer.setAttribute("data",id);
 
         const mediaBody = document.createElement('div');
         mediaBody.classList.add("media-body");

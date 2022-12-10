@@ -20,6 +20,20 @@
     <div class="photograph-header">
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
+    <nav class="sort-list-container">
+      <p>Trier par</p>
+      <div class="sort-button-group">
+        <button class="sort-button-main">Popularité
+        </button>
+        <i class="fa-solid fa-lg fa-chevron-down sort-arrow"></i>
+        <i class="fa-solid fa-lg fa-chevron-up sort-arrow"></i>
+        <div class="dropdown-sort-list hidden">
+          <button class="sort-button" data-sort="likes">Popularité</button>
+          <button class="sort-button" data-sort="date">Date</button>
+          <button class="sort-button" data-sort="title">Titre</button>
+        </div>
+      </div>
+    </nav>
     <div id="gallery">
     </div>
     <div id="bottom-tab">
@@ -85,7 +99,8 @@
   <script src="./scripts/factories/media.js" type="module"></script>
   <script src="./scripts/pages/photographer.js" type="module"></script>
   <script src="./scripts/utils/contactForm.js"></script>
-  <script src="scripts/utils/LightboxModal.js"></script>
+  <script src="./scripts/utils/LightboxModal.js"></script>
+  <script src="./scripts/utils/dropdownSortList.js"></script>
 </body>
 
 </html>

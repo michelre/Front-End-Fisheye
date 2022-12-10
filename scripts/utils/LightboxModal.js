@@ -27,7 +27,7 @@ function closeLightboxModal() {
 const lightBoxCloseButton = document.querySelector(".lightbox-modal-close");
 lightBoxCloseButton.addEventListener("click", closeLightboxModal);
 
-//Add Swipe functionality to lightbox buttons
+//Add navigation functionality to lightbox buttons
 const lighboxButtons = document.querySelectorAll("[data-lightbox-button]");
 
 lighboxButtons.forEach(lighboxButton => {
