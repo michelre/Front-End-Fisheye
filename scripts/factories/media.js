@@ -82,6 +82,10 @@ function mediaFactory(data) {
             //add image title
             lightboxMediaTitle.textContent = title;
             lightboxTitleContainer.appendChild(lightboxMediaTitle);
+            //add data to grand parent article element for sorting
+            mediaContainer.parentNode.dataset.likes = likes;
+            mediaContainer.parentNode.dataset.date = date;
+            mediaContainer.parentNode.dataset.title = title;
         } else if (video) {
             const vid = document.createElement('video');
             vid.setAttribute("src", galleryVideo);
@@ -95,6 +99,9 @@ function mediaFactory(data) {
             //add video title
             lightboxMediaTitle.textContent = title;
             lightboxTitleContainer.appendChild(lightboxMediaTitle);
+            mediaContainer.parentNode.dataset.likes = likes;
+            mediaContainer.parentNode.dataset.date = date;
+            mediaContainer.parentNode.dataset.title = title;
         }
 
         article.appendChild(mediaBody);

@@ -21,8 +21,7 @@ function showHidedropDownList () {
 }
 
 //Toggle sort arrow up/down
-function toggleSortArrow ()
- {
+function toggleSortArrow () {
  if(sortArrowUp.style.opacity == "1"){
   sortArrowUp.style.opacity = "0";
   sortArrowDown.style.opacity = "1";
@@ -47,3 +46,34 @@ options.forEach((option) => {
     showHidedropDownList();
   });
 });
+
+//Sort photographer medias by title
+function sortByTitle () {
+  const gallery = document.getElementById("gallery");
+  const galleryCards = [...document.querySelectorAll("article")];
+  const reorderedGalleryCards = galleryCards.sort((a,b) => {
+    return (a.dataset.title < b.dataset.title) ? -1 : (a.dataset.title > b.dataset.title) ? 1 : 0;
+  });
+  reorderedGalleryCards.forEach( card => gallery.appendChild(card));
+}
+
+//Sort photographer medias by popularity
+function sortByLikes () {
+  const gallery = document.getElementById("gallery");
+  const galleryCards = [...document.querySelectorAll("article")];
+  const reorderedGalleryCards = galleryCards.sort((a,b) => {
+    return b.dataset.likes - a.dataset.likes;
+  });
+  reorderedGalleryCards.forEach( card => gallery.appendChild(card));
+}
+
+//Sort photographer medias by date
+function sortByDate () {
+  const gallery = document.getElementById("gallery");
+  const galleryCards = [...document.querySelectorAll("article")];
+  const reorderedGalleryCards = galleryCards.sort((a,b) => {
+    return new Date(a.dataset.date) - new Date(b.dataset.date);
+  });
+  reorderedGalleryCards.forEach( card => gallery.appendChild(card));
+  console.log(reorderedGalleryCards);
+}
