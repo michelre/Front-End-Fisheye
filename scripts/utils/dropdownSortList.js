@@ -1,19 +1,11 @@
 const sortButton = document.querySelector(".sort-button-main");
 const dropdownList = document.querySelector(".dropdown-sort-list");
 const options = document.querySelectorAll(".sort-button");
-// const sortByLikes = document.querySelector(".sort-by-likes");
-// const sortByDate = document.querySelector(".sort-by-date");
-// const sortByTitle = document.querySelector(".sort-by-title");
-
+const sortByLikesButton = document.querySelector(".sort-by-likes");
+const sortByDateButton = document.querySelector(".sort-by-date");
+const sortByTitleButton = document.querySelector(".sort-by-title");
 const sortArrowUp = document.querySelector(".fa-chevron-up");
-
 const sortArrowDown = document.querySelector(".fa-chevron-down");
-
-// const sortOptions = ["Popularité", "Date", "Titre"];
-
-// const sortMedia = (option) => {
-//   console.log(option);  
-// };
 
 //Show/hide dropdown
 function showHidedropDownList () {
@@ -57,6 +49,8 @@ function sortByTitle () {
   reorderedGalleryCards.forEach( card => gallery.appendChild(card));
 }
 
+sortByTitleButton.addEventListener("click", sortByTitle);
+
 //Sort photographer medias by popularity
 function sortByLikes () {
   const gallery = document.getElementById("gallery");
@@ -67,6 +61,8 @@ function sortByLikes () {
   reorderedGalleryCards.forEach( card => gallery.appendChild(card));
 }
 
+sortByLikesButton.addEventListener("click", sortByLikes);
+
 //Sort photographer medias by date
 function sortByDate () {
   const gallery = document.getElementById("gallery");
@@ -74,6 +70,7 @@ function sortByDate () {
   const reorderedGalleryCards = galleryCards.sort((a,b) => {
     return new Date(a.dataset.date) - new Date(b.dataset.date);
   });
-  reorderedGalleryCards.forEach( card => gallery.appendChild(card));
-  console.log(reorderedGalleryCards);
+  reorderedGalleryCards.forEach(card => gallery.appendChild(card));
 }
+
+sortByDateButton.addEventListener("click", sortByDate);

@@ -122,8 +122,12 @@ async function initMedia() {
     //Calculate and display total likes after initialization
     calculateTotalLikes();
     displayTotalLikes();
+
+    //Sort media by popularity by default
+    sortByLikes();
 };
 
 initMedia();
 
 export { TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay };
+

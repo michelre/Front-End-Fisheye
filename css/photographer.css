@@ -63,6 +63,7 @@
 
 .sort-button-group {
     position: relative;
+    Z-index: 2;
 }
 
 .sort-list-container {
@@ -178,6 +179,7 @@ article {
     border-radius: 5px;
     overflow: hidden;
     background-color: black;
+    cursor: pointer;
 }
 
 #gallery img {
@@ -217,6 +219,7 @@ article {
     color: #901C1C;
     position: relative;
     top: 14px;
+    cursor: pointer;
 }
 
 .media-likes {

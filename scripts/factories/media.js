@@ -123,3 +123,5 @@ function mediaFactory(data) {
 
 
 export { mediaFactory };
+
+sortByLikes();
