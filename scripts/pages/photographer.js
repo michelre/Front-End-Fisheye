@@ -1,5 +1,6 @@
 import { getPhotographers, getMedias } from "../utils/getData.js";
 import { mediaFactory } from "../factories/media.js";
+import Lightbox from "../factories/Lightbox.js";
 
 //Get user id from URL
 const urlSearchParams = new URLSearchParams(document.location.search);
@@ -60,11 +61,9 @@ async function displayUserPageData() {
     //Modal, add Photographer name to title
     const modalTitle = document.querySelector(".modal-title");
     modalTitle.insertAdjacentText("beforeend", name);
-    
+
 
 }
-
-displayUserPageData();
 
 //Display gallery Data
 
@@ -74,7 +73,7 @@ function displayGalleryData(medias) {
 
     medias.forEach((media) => {
         const mediaModel = mediaFactory(media);
-        const mediaGalleryDOM = mediaModel.getUserMediaDOM();
+        const mediaGalleryDOM = mediaModel.getUserMediaDOM(); // Un élément <img> ou <video>
         gallery.appendChild(mediaGalleryDOM);
     });
 };
@@ -125,9 +124,15 @@ async function initMedia() {
 
     //Sort media by popularity by default
     sortByLikes();
+    const lightbox = new Lightbox(medias)
+    const slides = document.querySelector('.lightbox-slides')
+    slides.appendChild(lightbox.render())
+
+
 };
 
 initMedia();
+displayUserPageData();
 
-export { TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay };
+//export { TotalLikesAddOne, TotalLikesRemoveOne, totalLikes, updateTotalLikesDisplay };
 
